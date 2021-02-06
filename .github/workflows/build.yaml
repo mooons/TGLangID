@@ -16,7 +16,6 @@ jobs:
     - run: |
         mkdir build32
         Start-Job -Init ([ScriptBlock]::Create("Set-Location '$pwd\build32'")) -Script {
-          cmake -G "Visual Studio 16 2019" -A Win32 ..
           msbuild TGLangID.sln "-p:Configuration=Release" }
         Get-Job | Wait-Job | Receive-Job
       shell: powershell
